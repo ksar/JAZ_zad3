@@ -1,0 +1,82 @@
+#!/bin/bash -x
+curl -XGET http://localhost:8080/moviedatabase/rest/movies
+sleep 1
+curl -XPOST -H 'content-type: application/json' -d '{"title":"no id movie 0","actors":[],"comments":[],"rates":[]}' http://localhost:8080/moviedatabase/rest/movies
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies/0/comments
+sleep 1
+curl -XPOST -H 'content-type: application/json' -d '{"text":"sample comment 0"}' http://localhost:8080/moviedatabase/rest/movies/0/comments
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies/0/comments
+sleep 1
+curl -XDELETE http://localhost:8080/moviedatabase/rest/movies/0/comments/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies/0/comments
+sleep 1
+
+curl -XPOST -H 'content-type: application/json' -d '5' http://localhost:8080/moviedatabase/rest/movies/0/rate
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies/0
+sleep 1
+
+curl -XDELETE http://localhost:8080/moviedatabase/rest/movies/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies
+sleep 1
+
+curl -XGET http://localhost:8080/moviedatabase/rest/actors
+sleep 1
+curl -XPOST -H 'content-type: application/json' -d '{"firstName":"name 0", "lastName":"lastname 0"}' http://localhost:8080/moviedatabase/rest/actors
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/actors
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/actors/0
+sleep 1
+curl -XPUT -H 'content-type: application/json' -d '{"firstName":"put 0", "lastName":"put 0"}' http://localhost:8080/moviedatabase/rest/actors/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/actors/0
+sleep 1
+curl -XDELETE http://localhost:8080/moviedatabase/rest/actors/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/actors
+sleep 1
+
+curl -XPOST -H 'content-type: application/json' -d '{"title":"no id movie 0","actors":[],"comments":[],"rates":[]}' http://localhost:8080/moviedatabase/rest/movies
+sleep 1
+curl -XPOST -H 'content-type: application/json' -d '{"firstName":"name 0", "lastName":"lastname 0"}' http://localhost:8080/moviedatabase/rest/actors
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/actors/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/actors/0/movies
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies/0/actors
+sleep 1
+
+curl -XPOST -H 'content-type: application/json' -d '0' http://localhost:8080/moviedatabase/rest/actors/0/movies
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/actors/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/actors/0/movies
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies/0/actors
+sleep 1
+
+curl -XDELETE http://localhost:8080/moviedatabase/rest/actors/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies/0/actors
+sleep 1
+
+curl -XDELETE http://localhost:8080/moviedatabase/rest/movies/0
+sleep 1
+curl -XGET http://localhost:8080/moviedatabase/rest/movies
+sleep 1
